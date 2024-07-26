@@ -1,5 +1,8 @@
 local plugins = {
   {
+    "nvim-neotest/nvim-nio",
+  },
+  {
     "jay-babu/mason-nvim-dap.nvim",
     event="VeryLazy",
     dependencies = {
@@ -11,8 +14,8 @@ local plugins = {
     }
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    ft={"python","cpp"},
+    "nvimtools/none-ls.nvim",
+    ft={"python"},
     event="VeryLazy",
     opts=function()
       return require "custom.configs.null-ls"
@@ -97,19 +100,10 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "clangd",
-        "clang-format",
-        "codelldb",
-        "tailwindcss-language-server",
-        "eslint-lsp",
-        "js-debug-adapter",
-        "prettier",
-        "typescript-language-server",
-        "vue-language-server",
         "black",
         "debugpy",
         "mypy",
-        "ruff",
+        "ruff-lsp",
         "pyright",
       }
     }
