@@ -15,7 +15,7 @@ local plugins = {
   },
   {
     "nvimtools/none-ls.nvim",
-    ft={"python"},
+    ft={"python","go"},
     event="VeryLazy",
     opts=function()
       return require "custom.configs.null-ls"
@@ -62,6 +62,15 @@ local plugins = {
     end
   },
   {
+    "dreamsofcode-io/nvim-dap-go",
+    ft="go",
+    dependencies="mfussenegger/nvim-dap",
+    config=function(_,opts)
+      require("dap-go").setup(opts)
+      require("core.utils").load_mappings("dap_go")
+    end
+  },
+  {
     "mfussenegger/nvim-lint",
     event = "VeryLazy",
     config = function ()
@@ -105,6 +114,7 @@ local plugins = {
         "mypy",
         "ruff-lsp",
         "pyright",
+        "gopls",
       }
     }
   },

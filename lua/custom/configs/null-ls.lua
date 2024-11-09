@@ -10,10 +10,10 @@ local opts = {
       return { "--python-executable", virtual .. "/bin/python3" }
       end,
     }),
+    null_ls.builtins.formatting.gofmt,
+    null_ls.builtins.formatting.goimports_reviser,
+    null_ls.builtins.formatting.golines,
   },
-  on_init = function(new_client, _)
-    new_client.offset_encoding = 'utf-16'
-  end,
   on_attach=function(client,bufnr)
     if client.supports_method("textDocument/formatting") then
       vim.api.nvim_clear_autocmds({
