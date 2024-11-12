@@ -22,6 +22,16 @@ local plugins = {
     end,
   },
   {
+    "olexsmir/gopher.nvim",
+    ft="go",
+    config = function(_, opts)
+      require("gopher").setup(opts)
+    end,
+    build = function()
+      vim.cmd [[silent! GoInstallDeps]]
+    end,
+  },
+  {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     dependencies = {
@@ -112,7 +122,7 @@ local plugins = {
         "black",
         "debugpy",
         "mypy",
-        "ruff-lsp",
+        "ruff",
         "pyright",
         "gopls",
       }
