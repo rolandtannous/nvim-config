@@ -79,6 +79,7 @@ lspconfig.pylsp.setup {
   }
 }
 
+-- source: https://www.reddit.com/r/neovim/comments/tttofk/how_to_disable_annoying_pylint_warningespecially/
 -- lspconfig.pylsp.setup {
 -- on_attach=on_attach,
 -- filetypes = {'python'},
