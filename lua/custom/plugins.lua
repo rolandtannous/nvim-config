@@ -123,7 +123,6 @@ local plugins = {
         "debugpy",
         "mypy",
         "ruff",
-        "pyright",
         "gopls",
       }
     }
