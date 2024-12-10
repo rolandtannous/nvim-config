@@ -127,5 +127,37 @@ local plugins = {
       }
     }
   },
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    lazy = false,
+    version = false,
+    config = function()
+      require("avante").setup(require "custom.configs.avante")
+    end,
+    build = "make", -- or use the Windows command if needed
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "hrsh7th/nvim-cmp",
+      "nvim-tree/nvim-web-devicons",
+      "zbirenbaum/copilot.lua",
+    },
+  },
+  {
+    "HakonHarnes/img-clip.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("img-clip").setup(require "custom.configs.img-clip")
+    end,
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown", "Avante" },
+    opts = {
+      file_types = { "markdown", "Avante" },
+    },
+  },
 }
 return plugins
