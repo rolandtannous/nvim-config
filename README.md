@@ -45,17 +45,18 @@ cd ~/.config/nvim
 ./setup.sh
 ```
 
+This script will:
+- Install required Go packages if missing
+- Set up Python dependencies with specific versions
+- Configure necessary language servers
+
+
 4. Start neovim and Run
 ```bash
 :Lazy sync
 :MasonInstallAll
 :TSUpdate
 ```
-
-This script will:
-- Install required Go packages if missing
-- Set up Python dependencies with specific versions
-- Configure necessary language servers
 
 
 ## Features
