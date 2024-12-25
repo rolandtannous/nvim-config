@@ -1,0 +1,5 @@
+mypy==1.13.0
+mypy-extensions==1.0.0
+ruff==0.8.3
+python-lsp-jsonrpc==1.1.2
+python-lsp-server==1.12.0
