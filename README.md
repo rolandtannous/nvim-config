@@ -1,4 +1,4 @@
-# My NeoVim Configuration
+# NeoVim Configuration for Python and Go
 
 This repository contains a working Neovim configuration based on [NvChad](https://nvchad.com/), with custom modifications and additional plugins.
 
