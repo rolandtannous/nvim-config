@@ -9,14 +9,14 @@ This repository contains a working Neovim configuration based on [NvChad](https:
 - A [Nerd Font](https://www.nerdfonts.com/) (Optional but recommended)
 - `ripgrep` for telescope file search (Optional)
 - A terminal that supports true colors
-- Go >= 1.19 (for Go development)
+- Go >= 1.23.1 (for Go development)
 - Python >= 3.8 (for Python development)
 - Node.js >= 16 (for certain LSP servers)
 - `gcc` or `clang` (for treesitter compilation)
 
 ### Python Requirements
 The setup script will install these automatically with specific versions:
-- python-lsp-server
+- python-lsp-server[all]
 - mypy
 - ruff
 
@@ -83,7 +83,6 @@ This script will:
   - Go: gofmt, golines, goimports-reviser
 
 ### Additional Tools
-- ChatGPT integration for AI assistance
 - Avante Copilot support (Currently uses Sonnet 3.5)
 - Markdown preview with image support
 - Custom clipboard management
