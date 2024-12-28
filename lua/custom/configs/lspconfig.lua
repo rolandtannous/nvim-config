@@ -1,7 +1,7 @@
 local config = require ("plugins.configs.lspconfig")
 local on_attach = config.on_attach
 local capabilities = config.capabilities
-capabilities.offsetEncoding = {"utf-16"}
+-- capabilities.offsetEncoding = {"utf-16"}
 
 local lspconfig = require("lspconfig")
 local util = require "lspconfig/util"
@@ -32,7 +32,7 @@ local gopls_on_attach = function(client, bufnr)
             local params = vim.lsp.util.make_range_params()
             params.context = {only = {"source.organizeImports"}}
 
-            local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+            local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
             for cid, res in pairs(result or {}) do
                 for _, r in pairs(res.result or {}) do
                     if r.edit then
@@ -41,6 +41,7 @@ local gopls_on_attach = function(client, bufnr)
                     end
                 end
             end
+            vim.lsp.buf.format({async = false})
         end
     })
 end
@@ -59,7 +60,7 @@ lspconfig.gopls.setup {
     usePlaceholders = true,
     analyses = {
       unusedparams = true,
-    }
+    },
   }
 }
 

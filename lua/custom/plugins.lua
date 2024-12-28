@@ -32,20 +32,6 @@ local plugins = {
     end,
   },
   {
-    "jackMort/ChatGPT.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim"
-    },
-    config = function ()
-      require("chatgpt").setup({
-        predefined_chat_gpt_prompts = "https://raw.githubusercontent.com/rolandtannous/better-chatgpt-prompt/main/prompts.csv"
-      })
-    end
-  },
-  {
     "rcarriga/nvim-dap-ui",
     event = "VeryLazy",
     dependencies = "mfussenegger/nvim-dap",
@@ -119,6 +105,7 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        "lua-language-server",
         "black",
         "debugpy",
         "mypy",
