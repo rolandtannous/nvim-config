@@ -1,27 +1,47 @@
 local opts = {
-provider = "openai", -- Openrouter with deepseek as primary provider. Claude as secondary
+  provider = "deepseek", -- Openrouter with deepseek as primary provider. Claude as secondary
   auto_suggestions_provider = "openai", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
+
   claude = {
     endpoint = "https://api.anthropic.com",
     model = "claude-3-5-sonnet-20241022",
     temperature = 0,
     max_tokens = 8192,
   },
-  openai = {
-    endpoint = "https://openrouter.ai/api/v1",
-    model = "deepseek/deepseek-chat",
-    api_key_name = "OPENROUTER_API_KEY_AVANTE",
-    temperature = 0.0,
-    max_tokens = 8000,
+  vendors = {
+    openrouterdeepseek = {
+     __inherited_from="openai",
+     endpoint = "https://openrouter.ai/api/v1",
+     model = "deepseek/deepseek-chat",
+     api_key_name = "OPENROUTER_API_KEY_AVANTE",
+     temperature = 0.0,
+     max_tokens = 4096,
+   },
+    openrouterllama = {
+      __inherited_from="openai",
+      endpoint = "https://openrouter.ai/api/v1",
+      model="meta-llama/llama-3.3-70b-instruct",
+      api_key_name="OPENROUTER_API_KEY_AVANTE",
+      temperature=0.0,
+      max_tokens=4096,
+    },
+    deepseek = {
+      __inherited_from="openai",
+      endpoint = "https://api.deepseek.com/v1",
+      model = "deepseek-chat",
+      api_key_name = "DEEPSEEK_API_KEY",
+      temperature = 0.0,
+      max_tokens = 4096,
+    },
   },
-    behaviour = {
+  behaviour = {
     auto_suggestions = false, -- Experimental stage
     auto_set_highlight_group = true,
     auto_set_keymaps = true,
     auto_apply_diff_after_generation = true,
     support_paste_from_clipboard = false,
     minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
-  },
+    },
   hints = { enabled = true },
   windows = {
     position = "right", -- the position of the sidebar
@@ -62,5 +82,5 @@ provider = "openai", -- Openrouter with deepseek as primary provider. Claude as 
     override_timeoutlen = 500,
   },
 
-  }
+}
 return opts
