@@ -80,6 +80,19 @@ lspconfig.pylsp.setup {
   }
 }
 
+-- Update ruff settings
+lspconfig.ruff.setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
+    init_options = {
+        settings = {
+            -- Enable ERA rules
+            select = {"ERA"},
+        }
+    }
+}
+
+
 -- source: https://www.reddit.com/r/neovim/comments/tttofk/how_to_disable_annoying_pylint_warningespecially/
 -- lspconfig.pylsp.setup {
 -- on_attach=on_attach,
