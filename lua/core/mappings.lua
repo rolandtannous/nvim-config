@@ -3,7 +3,7 @@
 local M = {}
 
 M.general = {
-  i = {
+i = {
     -- go to  beginning and end
     ["<C-b>"] = { "<ESC>^i", "Beginning of line" },
     ["<C-e>"] = { "<End>", "End of line" },
@@ -21,8 +21,8 @@ M.general = {
     ["<C-h>"] = { "<C-w>h", "Window left" },
     ["<C-l>"] = { "<C-w>l", "Window right" },
     ["<C-j>"] = { "<C-w>j", "Window down" },
-    ["<C-k>"] = { "<C-w>k", "Window up" },
-
+["<C-k>"] = { "<C-w>k", "Window up" },
+    -- ["n"] = { "<C-w>w", "switch buffers"},
     -- save
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
 
@@ -256,6 +256,7 @@ M.nvimtree = {
 
   n = {
     -- toggle
+    -- ["t"] = {"<cmd> NvimTreeToggle <CR>", "Toggle nvimtree"},
     ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
 
     -- focus

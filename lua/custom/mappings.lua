@@ -1,5 +1,25 @@
 local M = {}
 
+M.general = {
+  n = {
+        ["s"] = { "<C-w>w", "switch buffers"},
+
+  }
+}
+
+M.nvimtree = {
+  plugin = true,
+
+  n = {
+    -- toggle
+    ["t"] = {"<cmd> NvimTreeToggle <CR>", "Toggle nvimtree"},
+    -- ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+
+    -- focus
+  },
+}
+
+
 M.dap = {
   plugin = true,
   n = {

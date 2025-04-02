@@ -31,7 +31,15 @@ local opts = {
       model = "deepseek-chat",
       api_key_name = "DEEPSEEK_API_KEY",
       temperature = 0.0,
-      max_tokens = 4096,
+      max_tokens = 8192,
+    },
+    mistral = {
+      __inherited_from="openai",
+      endpoint="https://codestral.mistral.ai/v1",
+      model = "codestral-latest",
+      api_key_name="CODESTRAL_API_KEY",
+      stream=true,
+      safe_prompt=false,
     },
   },
   behaviour = {
