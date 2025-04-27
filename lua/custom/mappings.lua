@@ -19,7 +19,22 @@ M.nvimtree = {
   },
 }
 
-
+-- M.lspsaga = {
+--   plugin = true,
+--
+--   n = {
+--     ["fa"] = {"<cmd>Lspsaga code_action<cr>", "Code Action", opts= {silent=true}},
+--     ["ff"] = {"<cmd>Lspsaga finder<cr>", "Finder", opts = {silent = true}},
+--     ["fr"] = {"<cmd>Lspsaga rename<cr>", "Rename", opts = {silent = true}},
+--     ["fo"] = {"<cmd>Lspsaga outline<cr>", "Outline", opts = {silent = true}},
+--     ["fp"] = {"<cmd>Lspsaga peek_definition<cr>", "Peek definition", opts = {silent=true}},
+--     ["ft"] = {"<cmd>Lspsaga peek_type_definition<cr>", "Peek type definition", opts = {silent=true}},
+--     ["fg"] = {"<cmd>Lspsaga goto_type_definition<cr>", "Goto type definition", opts = {silent=true}},
+--
+--
+-- },
+--
+-- }
 M.dap = {
   plugin = true,
   n = {

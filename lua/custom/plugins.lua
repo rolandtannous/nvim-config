@@ -1,6 +1,40 @@
 local plugins = {
+
   {
     "nvim-neotest/nvim-nio",
+  },
+  -- { "nvim-tree/nvim-web-devicons", opts = {} },
+  -- {
+  --   'nvimdev/lspsaga.nvim',
+  --   config = function()
+  --     require "custom.configs.lspsaga"
+  --     require("core.utils").load_mappings("lspsaga")
+  --   end,
+  --   dependencies = {
+  --       'nvim-treesitter/nvim-treesitter', -- optional
+  --       'nvim-tree/nvim-web-devicons',     -- optional
+  --   }
+  -- },
+    {
+    "klen/nvim-config-local",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      print("Setting up nvim-config-local")
+    require('config-local').setup {
+      -- Default options (optional)
+
+      -- Config file patterns to load (lua supported)
+      config_files = { ".nvim.lua", ".nvimrc", ".exrc" },
+
+      -- Where the plugin keeps files data
+      hashfile = vim.fn.stdpath("data") .. "/config-local",
+
+      autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
+      commands_create = true,     -- Create commands (ConfigLocalSource, ConfigLocalEdit, ConfigLocalTrust, ConfigLocalDeny)
+      silent = false,             -- Disable plugin messages (Config loaded/denied)
+      lookup_parents = true,     -- Lookup config files in parent directories
+    }
+  end
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
@@ -15,7 +49,8 @@ local plugins = {
   },
   {
     "nvimtools/none-ls.nvim",
-    ft={"python","go"},
+    -- ft={"python","go"},
+    ft={"go"},
     event="VeryLazy",
     opts=function()
       return require "custom.configs.null-ls"
@@ -34,26 +69,43 @@ local plugins = {
   {
     "rcarriga/nvim-dap-ui",
     event = "VeryLazy",
-    dependencies = "mfussenegger/nvim-dap",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     config = function()
-      local dap = require("dap")
-      local dapui = require("dapui")
-      require("dapui").setup()
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
-      end
+      require("dapui").setup {
+        icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
+        controls = {
+          icons = {
+            pause = '⏸',
+            play = '▶',
+            step_into = '⏎',
+            step_over = '⏭',
+            step_out = '⏮',
+            step_back = 'b',
+            run_last = '▶▶',
+            terminate = '⏹',
+            disconnect = '⏏',
+          },
+        },
+      }
+     local listener = require("dap").listeners
+     listener.after.event_initialized["dapui_config"] = function()
+       require("dapui").open()
+     end
+     listener.before.event_terminated["dapui_config"] = function()
+       require("dapui").close()
+     end
+     listener.before.event_exited["dapui_config"] = function()
+       require("dapui").close()
+     end
+     vim.keymap.set("n", "<localleader>T", function()
+        require("dapui").toggle()
+     end, { desc = "Toggle DAP UI" })
     end
   },
   {
     "mfussenegger/nvim-dap",
     config = function()
-      require "custom.configs.dap"
+      -- require "custom.configs.dap"
      require("core.utils").load_mappings("dap")
     end
   },
@@ -76,14 +128,14 @@ local plugins = {
   },
   {
     "mfussenegger/nvim-dap-python",
-    ft="python",
+    ft={"python"},
     dependencies = {
       "mfussenegger/nvim-dap",
       "rcarriga/nvim-dap-ui",
     },
     config = function(_, opts)
       local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
-      require("dap-python").setup(path)
+      require("dap-python").setup(path, {})
       require("core.utils").load_mappings("dap_python")
     end,
   },
